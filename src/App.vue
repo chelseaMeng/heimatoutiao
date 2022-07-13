@@ -6,15 +6,8 @@
     <!-- 2.px->rem -->
     <!-- 下载postcss-pxtorem -->
     <!-- vant官网 版本5.1.1-->
-    <h1>黑马头条</h1>
-    <span class="toutiao toutiao-dianzan"></span>
-    <van-button type="primary">主要按钮</van-button>
-    <van-button type="info">信息按钮</van-button>
-    <van-button type="default">默认按钮</van-button>
-    <van-button type="warning">警告按钮</van-button>
-    <van-button type="danger">危险按钮</van-button>
-    <div class="login"></div>
-    <div style="background: gold; height: 200px"></div>
+    <!-- 一级路由出口 -->
+    <router-view></router-view>
   </div>
 </template>
 
