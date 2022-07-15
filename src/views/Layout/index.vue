@@ -1,0 +1,62 @@
+<template>
+  <div>
+    布局页面
+    <router-view></router-view>
+    <!-- 底部导航 -->
+    <van-tabbar v-model="active">
+      <van-tabbar-item>
+        <template #icon>
+          <span class="toutiao toutiao-shouye"></span>
+          <span class="text">首页</span>
+        </template>
+      </van-tabbar-item>
+
+      <van-tabbar-item>
+        <template #icon>
+          <span class="toutiao toutiao-shipin"></span>
+          <span class="text">视频</span>
+        </template>
+      </van-tabbar-item>
+
+      <van-tabbar-item>
+        <template #icon>
+          <span class="toutiao toutiao-wenda"></span>
+          <span class="text">问答</span>
+        </template>
+      </van-tabbar-item>
+
+      <van-tabbar-item>
+        <template #icon>
+          <span class="toutiao toutiao-wode"></span>
+          <span class="text">我的</span>
+        </template>
+      </van-tabbar-item>
+    </van-tabbar>
+  </div>
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+      active: 0
+    }
+  }
+}
+</script>
+
+<style scoped lang="less">
+:deep(.van-tabbar-item__icon) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100%;
+  .text {
+    font-size: 0.32rem;
+  }
+  .toutiao {
+    font-size: 0.53333rem;
+  }
+}
+</style>
