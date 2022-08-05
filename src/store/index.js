@@ -11,9 +11,10 @@ export default new Vuex.Store({
   mutations: {
     setUser (state, payload) {
       // payload 是调用方法时传递的参数
+      // 把token存储到vuex中
       state.user = payload
       // 本地存储token
-      setToken(state, payload)
+      setToken(payload)
     }
   }
 })

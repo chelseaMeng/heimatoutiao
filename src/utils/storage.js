@@ -13,7 +13,7 @@ class Storage {
     const value = localStorage.getItem(key)
     try {
       // 如果是对象或数组就序列化
-      return JSON.parse(key)
+      return JSON.parse(value)
     } catch (err) {
       // 如果不是对象或数组会报错进入err,再直接返回value值
       return value

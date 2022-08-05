@@ -98,8 +98,9 @@ export default {
         // 服务器返回的状态码在res.status中
         // console.log(res)
         // console.log(res.status)
-        // 登录之后获取token
+        // 登录之后token存本地
         this.$store.commit('setUser', res.data.data)
+        console.log(res.data.data)
         this.$toast.success('登录成功')
         this.$router.push('/profile')
       } catch (err) {
