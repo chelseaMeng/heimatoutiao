@@ -11,3 +11,20 @@ export const getSearchSeggestionsApi = (q) => {
     // method: 'get'
   })
 }
+
+/**
+ *获取搜索结果
+ * @param {String}
+ * @returns Promise
+ */
+export const getSearchResultsApi = (q, page, perPage) => {
+  return request({
+    url: '/v1_0/search',
+    params: {
+      q,
+      page,
+      per_page: perPage
+    }
+    // method: 'get'
+  })
+}
