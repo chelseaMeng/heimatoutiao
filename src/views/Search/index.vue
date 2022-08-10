@@ -11,6 +11,7 @@
         placeholder="请输入搜索关键词"
         @search="onSearch"
         @focus="onSearchFocus"
+        @cancel="$router.back()"
       />
     </form>
     <!-- 搜索历史/建议/结果 -->
@@ -19,7 +20,11 @@
     <search-suggestion></search-suggestion> -->
     <!--动态组件 -->
     <!-- is指定动态组件名字,里面的值是字符串 并且值应该从注册的components里面取-->
-    <components :is="componentName" :keywords="keywords"></components>
+    <components
+      :is="componentName"
+      :keywords="keywords"
+      :history="history"
+    ></components>
   </div>
 </template>
 

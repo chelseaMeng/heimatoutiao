@@ -8,8 +8,8 @@
     >
       <van-cell
         :title="item.title"
-        v-for="item in searchResult"
-        :key="item.art_id"
+        v-for="(item, index) in searchResult"
+        :key="index"
       />
     </van-list>
   </div>
