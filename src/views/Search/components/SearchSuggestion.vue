@@ -8,6 +8,7 @@
       v-for="(item, index) in highLightSuggestions"
       :key="index"
       icon="search"
+      @click="clickSearchSuggestions(index)"
     >
       <template #title> <span v-html="item"></span> </template>
     </van-cell>
@@ -59,7 +60,15 @@ export default {
       } catch (error) {
         this.$toast.fail('获取搜索建议失败')
       }
-    }, 300)
+    }, 300),
+    // 点击后获取搜索结果
+    clickSearchSuggestions (ind) {
+      // 改变父元素的keywords
+      this.$parent.keywords = this.suggestions[ind]
+      // this.$parent.history.unshift(this.suggestion[ind])
+      // 改变父元素的isShowSearchResult的值,显示搜索结果
+      this.$parent.isShowSearchResult = true
+    }
   },
   watch: {
     keywords: {
