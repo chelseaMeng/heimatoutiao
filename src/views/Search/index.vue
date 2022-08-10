@@ -24,6 +24,8 @@
       :is="componentName"
       :keywords="keywords"
       :history="history"
+      @clearAll="history = []"
+      @search="onSearch"
     ></components>
   </div>
 </template>
@@ -32,6 +34,7 @@
 import SearchHistory from './components/SearchHistory'
 import SearchResult from './components/SearchResult'
 import SearchSuggestion from './components/SearchSuggestion'
+import storage from '@/utils/storage'
 export default {
   name: 'Search',
   data () {
@@ -40,18 +43,18 @@ export default {
       //   用于记录用户是否搜索
       isShowSearchResult: false,
       // 搜索记录
-      history: []
+      history: storage.get('TOUTIAO_SEARCH_HISTORY') || []
     }
   },
   methods: {
-    onSearch () {
+    onSearch (val) {
       // console.log('正在搜索')
-      const index = this.history.indexOf(this.keywords)
+      const index = this.history.indexOf(val)
       // 说明历史记录里有这个值
       if (index !== -1) {
         this.history.splice(index, 1)
       }
-      this.history.unshift(this.keywords)
+      this.history.unshift(val)
       // 展示搜索结果
       this.isShowSearchResult = true
     },
@@ -79,6 +82,12 @@ export default {
       }
       // 既不显示搜索历史 也不是显示搜索结果 就渲染搜索建议
       return 'SearchSuggestion'
+    }
+  },
+  watch: {
+    history (value) {
+      storage.set('TOUTIAO_SEARCH_HISTORY', value)
+      // localStorage.setItem(('TOUTIAO_SEARCH_HISTORY', JSON.stringify(value)))
     }
   }
 }
