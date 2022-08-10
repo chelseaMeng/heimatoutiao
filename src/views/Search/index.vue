@@ -33,12 +33,21 @@ export default {
     return {
       keywords: '',
       //   用于记录用户是否搜索
-      isShowSearchResult: false
+      isShowSearchResult: false,
+      // 搜索记录
+      history: []
     }
   },
   methods: {
     onSearch () {
-      console.log('正在搜索')
+      // console.log('正在搜索')
+      const index = this.history.indexOf(this.keywords)
+      // 说明历史记录里有这个值
+      if (index !== -1) {
+        this.history.splice(index, 1)
+      }
+      this.history.unshift(this.keywords)
+      // 展示搜索结果
       this.isShowSearchResult = true
     },
     onSearchFocus () {

@@ -4,7 +4,16 @@
 
 <script>
 export default {
-  name: 'SearchHistory'
+  name: 'SearchHistory',
+  data () {
+    return {}
+  },
+  props: {
+    keywords: {
+      type: String,
+      required: true
+    }
+  }
 }
 </script>
 
