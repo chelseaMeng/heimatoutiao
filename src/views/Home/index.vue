@@ -21,8 +21,13 @@
       <span class="toutiao toutiao-gengduo" @click="showPopUp"></span>
     </van-tabs>
 
-    <!-- 弹出层 -->
-    <EditChannelPopup ref="popup" :myChannels="myChannels"></EditChannelPopup>
+    <!-- 弹出层 频道编辑-->
+    <EditChannelPopup
+      ref="popup"
+      :myChannels="myChannels"
+      :active="active"
+      @updateActive="updateActive"
+    ></EditChannelPopup>
   </div>
 </template>
 
@@ -42,10 +47,26 @@ export default {
     // 封装我的频道列表
     async getMyChannels () {
       try {
-        // 发送请求获取我的频道列表
-        const { data } = await getMyChannels()
-        console.log(data)
-        this.myChannels = data.data.channels
+        let channels = []
+        if (this.user) {
+          // 已登录,请求获取用户频道列表
+          const { data } = await getMyChannels()
+          this.channels = data.data.channels
+        } else {
+          // 未登录,判断是否有本地的频道列表数据
+          const localChennels = JSON.parse(
+            localStorage.getItem('TOUTIAO_CHANNEL')
+          )
+          // 有,拿来用
+          if (localChennels) {
+            channels = localChennels
+          } else {
+            // 没有,请求获取默认的频道列表
+            const { data } = await getMyChannels()
+            this.channels = data.data.channels
+          }
+        }
+        this.myChannels = channels
       } catch (err) {
         this.$toast.fail('请重新获取')
       }
@@ -54,6 +75,9 @@ export default {
       // this.isShow = true
       // 父组件中没有isShow属性,通过ref标识弹出层组件,获取他身上的isShow属性
       this.$refs.popup.isShow = true
+    },
+    updateActive (index) {
+      this.active = index
     }
   },
   components: {

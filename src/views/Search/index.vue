@@ -47,7 +47,7 @@ export default {
     }
   },
   methods: {
-    onSearch (val) {
+    onSearch (val, ind) {
       // console.log('正在搜索')
       const index = this.history.indexOf(val)
       // 说明历史记录里有这个值

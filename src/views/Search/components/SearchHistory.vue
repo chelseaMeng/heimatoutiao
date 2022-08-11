@@ -55,9 +55,9 @@ export default {
         this.$parent.history.splice(index, 1)
       } else {
         // 非删除状态切换显示搜索结果
-        // this.$parent.keywords = item
-        // this.$parent.isShowSearchResult = true
-        this.$emit('search', item)
+        this.$parent.keywords = item
+        this.$parent.isShowSearchResult = true
+        // this.$emit('search', item)
       }
     }
   }
