@@ -33,6 +33,11 @@ const routes = [
   {
     path: '/search',
     component: () => import('@/views/Search') // 路由懒加载
+  },
+  {
+    path: '/article/:articleId', // 动态路由:不同的列表项跳转到不同的详情页
+    component: () => import('@/views/Article'), // 路由懒加载
+    props: true
   }
 ]
 

@@ -15,3 +15,13 @@ export const getArticleList = (ChannelId, timestamp) => {
     }
   })
 }
+
+/**
+ * @param {string,Number} //获取文章详情
+ */
+export const getArticleById = (articleId) => {
+  return request({
+    url: `/v1_0/articles/${articleId}`,
+    method: 'get'
+  })
+}

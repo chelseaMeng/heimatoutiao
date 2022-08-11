@@ -13,7 +13,6 @@
           success-text="刷新成功"
           :key="item.art_id"
           :articleInfo="item"
-          @click="ArticleClick"
         ></ArticleItem>
       </van-list>
     </van-pull-refresh>
@@ -103,9 +102,6 @@ export default {
         // 当下拉刷新一次,vant内部会把refreshLoading = false 改成true
         this.refreshLoading = false
       }
-    },
-    ArticleClick () {
-      console.log('点击了列表项')
     }
   },
   components: {

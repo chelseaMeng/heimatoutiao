@@ -17,7 +17,9 @@ module.exports = {
       // }
 
       //适配的属性
-      propList: ['*']
+      propList: ['*'],
+      //配置不要转换的样式资源
+      exclude: 'github-markdown'
     }
   }
 }

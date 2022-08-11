@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="article-container" @click="jumpToArticleDetail">
     <!-- 渲染无图片 -->
     <van-cell
       v-if="articleInfo.cover.type === 0"
@@ -57,6 +57,14 @@ export default {
       const art = this.articleInfo
       const relativeTime = dayjs(art.pubdate).fromNow()
       return `${art.aut_name} ${art.comm_count}评论 ${relativeTime}`
+    }
+  },
+  methods: {
+    jumpToArticleDetail () {
+      // console.log(this.articleInfo)
+      this.$router.push({
+        path: `/article/${this.articleInfo.art_id}`
+      })
     }
   }
 }

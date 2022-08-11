@@ -38,3 +38,22 @@ export const getUserInfo = () => {
     // }
   })
 }
+
+// 添加用户关注
+export const AddFollow = (target) => {
+  return request({
+    url: '/v1_0/user/followings',
+    method: 'POST',
+    data: {
+      target
+    }
+  })
+}
+
+// 取消用户关注
+export const DeleteFollow = (target) => {
+  return request({
+    url: `/v1_0/user/followings/${target}`,
+    method: 'DELETE'
+  })
+}
